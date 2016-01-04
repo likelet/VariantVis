@@ -7,7 +7,7 @@ package WriteReport;
 
 import Tools.ReadlibAndWrite;
 import java.io.FileWriter;
-import java.io.IOException;  
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -39,17 +39,19 @@ public class WriteHtml {
     }
 
     public void process() {
-        builder.append("<html lang=\"en\">\n");
-        builder.append("<meta charset=\"utf-8\">\n");
+        builder.append("<!DOCTYPE HTML>\n<html>\n");
+
         //header HTML
-        StringBuilder headBuilder = new StringBuilder();
         try {
 //            headBuilder.append(ReadlibAndWrite.WriteJS("src/resources/Highcharts.js"));
-            headBuilder.append(ReadlibAndWrite.writeLink("http://code.highcharts.com/modules/exporting.js", "javascript"));
-            headBuilder.append(ReadlibAndWrite.writeLink("https://code.highcharts.com/highcharts.js", "javascript"));
-            headBuilder.append(ReadlibAndWrite.writeLink("http://www.highcharts.com/lib/jquery-1.11.0.min.js", "javascript"));
-            headBuilder.append(ReadlibAndWrite.writeSrc(this.teststr()));
+            builder.append("<meta charset=\"utf-8\">\n");
+            StringBuilder headBuilder = new StringBuilder();
+            headBuilder.append(ReadlibAndWrite.WriteJS("src/resources/jquery.js"));
+            headBuilder.append(ReadlibAndWrite.WriteJS("src/resources/highcharts.js"));
+            headBuilder.append(ReadlibAndWrite.WriteJS("src/resources/exportModule/exporting.js"));
+            headBuilder.append(ReadlibAndWrite.writeSrc(this.teststr(),"javascript"));
             builder.append(new HeaderString(headBuilder).getBuilder()).append("\n");
+
         } catch (IOException ex) {
             Logger.getLogger(WriteHtml.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -102,6 +104,6 @@ public class WriteHtml {
     }
 
     public static void main(String[] args) {
-        new WriteHtml("G:\\data\\weilai\\test.html");
+        new WriteHtml("test.html");
     }
 }

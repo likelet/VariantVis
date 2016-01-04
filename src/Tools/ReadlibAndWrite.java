@@ -64,9 +64,9 @@ public class ReadlibAndWrite {
         
         return builder.toString();
     }
-    public static String writeSrc(String srccode) throws IOException{
+    public static String writeSrc(String srccode,String type) throws IOException{
         StringBuilder builder = new StringBuilder();
-        builder.append("<script>\n"+srccode+"</script>\n");
+        builder.append("<script type=\"text/"+type+"\">\n"+srccode+"</script>\n");
         
         return builder.toString();
     }
