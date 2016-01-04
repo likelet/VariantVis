@@ -6,17 +6,26 @@
 package WriteReport;
 
 /**
+ * <p>
+ * BodyString</p>
+ * <p>
+ * Created on 2016-1-4 10:40:30</p>
+ * <p>
+ * Author Email: zhaoqi3@mail2.sysu.edu.cn</p>
  *
- * @author Zinky-i7
+ * @author ZHAO Qi
+ * @date 2016-1-4 10:40:30
+ * @version java 1.6.0
+ * @version
  */
-public class HeaderString {
+public class BodyString {
 
     StringBuilder builder = new StringBuilder();
 
-    public HeaderString(StringBuilder str) {
-        builder.append("<head>\r\n");
+    public BodyString(StringBuilder str) {
+        builder.append("<body>\r\n");
         builder.append(str.toString());
-        builder.append("</head>\r\n");
+        builder.append("</body>\r\n");
     }
 
     public StringBuilder getBuilder() {
