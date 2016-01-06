@@ -38,7 +38,7 @@ public class StringCoverter {
         return key+": {" +str+"}";
     }
     public static String getContainSeries(String str){
-        return "series: {" +str+"}";
+        return "series: [{" +str+"}]";
     }
     public static String getContainSeriesElement(String str,String str2){
         return "['" +str+"',"+str2+"]";
@@ -48,7 +48,7 @@ public class StringCoverter {
         return "{"+StringCoverter.getKeyvauleString("name", key)+","+StringCoverter.getDataList(datalist);
     }
     //return function str
-    public static String addExternalString(String str){
+    public static String addFunctionString(String str){
         return "$(function () {"+str+"});";
     }
     public static void main(String[] args) {
