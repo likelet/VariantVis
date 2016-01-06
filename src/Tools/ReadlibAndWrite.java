@@ -27,7 +27,7 @@ public class ReadlibAndWrite {
             //FileWriter fw = new FileWriter(outputFile);
 
             while (br.ready()) {
-                builder.append(br.readLine().trim());
+                builder.append(br.readLine().trim()+"\n");
             }
             //fw.flush();
             br.close();

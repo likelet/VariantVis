@@ -48,7 +48,12 @@ public class WriteHtml {
             StringBuilder headBuilder = new StringBuilder();
             headBuilder.append(ReadlibAndWrite.WriteJS("src/resources/jquery.js"));
             headBuilder.append(ReadlibAndWrite.WriteJS("src/resources/highcharts.js"));
+            headBuilder.append(ReadlibAndWrite.WriteJS("src/resources/exportModule/jspdf.js"));
+            headBuilder.append(ReadlibAndWrite.WriteJS("src/resources/exportModule/canvg.js"));
             headBuilder.append(ReadlibAndWrite.WriteJS("src/resources/exportModule/exporting.js"));
+            headBuilder.append(ReadlibAndWrite.WriteJS("src/resources/exportModule/export-csv.js"));
+            headBuilder.append(ReadlibAndWrite.WriteJS("src/resources/exportModule/highcharts-export-clientside.js"));
+//            headBuilder.append(ReadlibAndWrite.WriteJS("src/resources/exportModule/exporting-offline.js"));
             headBuilder.append(ReadlibAndWrite.writeSrc(this.teststr(),"javascript"));
             builder.append(new HeaderString(headBuilder).getBuilder()).append("\n");
 
