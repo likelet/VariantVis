@@ -376,11 +376,14 @@ e.onmouseover=e.ontouchstart=e.onclick=null,s(e)}});I.menu=function(a,b,e,c){ret
 
 </script>
 <script type="text/javascript">
-$(function () {$('#container').highcharts({chart: {plotBackgroundColor: 'white',plotBorderWidth: 'null',plotShadow: 'false'},title: {text: 'Browser market shares at a specific website, 2010'},tooltip: {pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'},plotOptions: {pie: {allowPointSelect: 'true',cursor: 'pointer',dataLabels: {enabled: 'true',color: '#000000',connectorColor: '#000000',format: '<b>{point.name}</b>: {point.percentage:.1f} %'}}},series: [{type: 'pie',name: 'test2',data: [['test1',50],['test2',30],['test3',20]]}]});});</script>
+$(function () {$('#container1').highcharts({chart: {plotBackgroundColor: 'white',plotBorderWidth: 'null',plotShadow: 'false'},title: {text: 'null'},tooltip: {pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'},plotOptions: {pie: {allowPointSelect: 'true',cursor: 'pointer',dataLabels: {enabled: 'true',color: '#000000',connectorColor: '#000000',format: '<b>{point.name}</b>: {point.percentage:.1f} %'}}},series: [{type: 'pie',name: 'test2',data: [['test1',50],['test2',30],['test3',20]]}]});});</script>
+<script type="text/javascript">
+$(function () {$('#container2').highcharts({chart: {},title: {text: 'null'},xAxis: {categories: ['test1','test2','test3']},series: [{data: [50,30,20]}]});});</script>
 </head>
 
 <body>
-<div id="container" style="min-width:800px;height:400px;"></div>
+<div id="container1" style="min-width:400px;height:400px;"></div>
+<div id="container2" style="min-width:400px;height:400px;"></div>
 </body>
 
 </html>

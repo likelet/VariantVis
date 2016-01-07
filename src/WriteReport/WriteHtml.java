@@ -7,6 +7,7 @@ package WriteReport;
 
 import Tools.PiechartFunctionstring;
 import Tools.ReadlibAndWrite;
+import Tools.SingleClassLinechartFunctionstring;
 import Tools.StringCoverter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -56,7 +57,9 @@ public class WriteHtml {
 //            headBuilder.append(ReadlibAndWrite.WriteJS("src/resources/exportModule/export-csv.js"));
 //            headBuilder.append(ReadlibAndWrite.WriteJS("src/resources/exportModule/highcharts-export-clientside.js"));
 //            headBuilder.append(ReadlibAndWrite.WriteJS("src/resources/exportModule/exporting-offline.js"));
-            headBuilder.append(ReadlibAndWrite.writeSrc(StringCoverter.addFunctionString(new PiechartFunctionstring().getOutstr()),"javascript"));
+            headBuilder.append(ReadlibAndWrite.writeSrc(StringCoverter.addFunctionString(new PiechartFunctionstring("container1").getOutstr()),"javascript"));
+            headBuilder.append(ReadlibAndWrite.writeSrc(StringCoverter.addFunctionString(new SingleClassLinechartFunctionstring("container2").getOutstr()),"javascript"));
+            
             builder.append(new HeaderString(headBuilder).getBuilder()).append("\n");
 
         } catch (IOException ex) {
@@ -64,7 +67,8 @@ public class WriteHtml {
         }
         //body html
         StringBuilder bodyBuilder = new StringBuilder();
-        bodyBuilder.append("<div id=\"container\" style=\"min-width:800px;height:400px;\"></div>\n");
+        bodyBuilder.append("<div id=\"container1\" style=\"min-width:400px;height:400px;\"></div>\n");
+        bodyBuilder.append("<div id=\"container2\" style=\"min-width:400px;height:400px;\"></div>\n");
         builder.append(new BodyString(bodyBuilder).getBuilder() + "\n");
         builder.append("</html>\n");
     }

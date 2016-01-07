@@ -6,6 +6,8 @@
 
 package Tools;
 
+import java.util.LinkedHashMap;
+
 /**
  * <p>StringCoverter</p>
  * <p>Created on 2016-1-6 18:12:30</p>
@@ -30,6 +32,24 @@ public class StringCoverter {
         }
         str=str.substring(0,str.length()-1);
         return "data: [" +str+"]";
+    }
+    //
+    public static String getDataList(LinkedHashMap<String,String> datalist){
+        String str="";
+        for(String key:datalist.keySet()){
+            str+=datalist.get(key)+",";
+        }
+        str=str.substring(0,str.length()-1);
+        return "data: [" +str+"]";
+    }
+    //
+    public static String getDataStringList(String name,LinkedHashMap<String,String> datalist){
+        String str="";
+        for(String key:datalist.keySet()){
+            str+="'"+key+"',";
+        }
+        str=str.substring(0,str.length()-1);
+        return name+": [" +str+"]";
     }
     public static String getDataStr(String str){
         return "data: [" +str+"]";

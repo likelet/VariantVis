@@ -20,13 +20,39 @@ public class FigureClass {
     private String subtitle="null";
     private String XaxisTitle="null";
     private String YaxisTitle="null";
-    
-    
-    public void printstr(String str){
 
-        switch (str){
-            case "titile" :{
-                
-            };
-        }}
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getSubtitle() {
+        return subtitle;
+    }
+
+    public void setSubtitle(String subtitle) {
+        this.subtitle = subtitle;
+    }
+
+    public String getXaxisTitle() {
+        return XaxisTitle;
+    }
+
+    public void setXaxisTitle(String XaxisTitle) {
+        this.XaxisTitle = XaxisTitle;
+    }
+
+    public String getYaxisTitle() {
+        return YaxisTitle;
+    }
+
+    public void setYaxisTitle(String YaxisTitle) {
+        this.YaxisTitle = YaxisTitle;
+    }
+    
+    
+   
 }

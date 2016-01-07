@@ -17,13 +17,13 @@ public class PiechartFunctionstring extends FigureClass {
     private LinkedHashMap<String, String> dataset;
     private String outstr;
 
-    public PiechartFunctionstring(){
+    public PiechartFunctionstring(String classid){
         LinkedHashMap<String, String> dataset=new LinkedHashMap<String, String> ();
         dataset.put("test1", "50");
         dataset.put("test2", "30");
         dataset.put("test3", "20");
         this.dataset=dataset;
-        this.classid="container";
+        this.classid=classid;
         this.getPieChartFunctionString();
         
     }
@@ -41,7 +41,7 @@ public class PiechartFunctionstring extends FigureClass {
                 + StringCoverter.getKeyvauleString("plotBorderWidth", "null") + ","
                 + StringCoverter.getKeyvauleString("plotShadow", "false");
         String titlestr 
-                = StringCoverter.getKeyvauleString("text", "Browser market shares at a specific website, 2010");
+                = StringCoverter.getKeyvauleString("text", this.getTitle());
         String tooltipstr 
                 = StringCoverter.getKeyvauleString("pointFormat", "{series.name}: <b>{point.percentage:.1f}%</b>");
         String plotOptionsstr
