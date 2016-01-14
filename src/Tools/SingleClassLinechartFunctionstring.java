@@ -28,8 +28,9 @@ public class SingleClassLinechartFunctionstring extends FigureClass {
         dataset.put("test1", "50");
         dataset.put("test2", "30");
         dataset.put("test3", "20");
-        this.dataset = dataset;
-        this.classid = classid;
+        this.dataset=dataset;
+        this.classid=classid;
+        this.setTitle("Distribution of SNVs");
         this.getSingleClassLinechartFunctionstring();
         
     }

@@ -49,8 +49,11 @@ public class WriteHtml {
         try {
 //            headBuilder.append(ReadlibAndWrite.WriteJS("src/resources/Highcharts.js"));
             builder.append("<meta charset=\"utf-8\">\n");
+            builder.append("<meta name=\"viewport\" content=\"width=device-width,minimum-scale=1\">");
             StringBuilder headBuilder = new StringBuilder();
             headBuilder.append(ReadlibAndWrite.WriteJS("src/resources/jquery.js"));
+            
+            //highchart
             headBuilder.append(ReadlibAndWrite.WriteJS("src/resources/highcharts.js"));
 //            headBuilder.append(ReadlibAndWrite.WriteJS("src/resources/exportModule/jspdf.js"));
 //            headBuilder.append(ReadlibAndWrite.WriteJS("src/resources/exportModule/canvg.js"));
@@ -61,6 +64,12 @@ public class WriteHtml {
             headBuilder.append(ReadlibAndWrite.writeSrc(StringCoverter.addFunctionString(new PiechartFunctionstring("container1").getOutstr()),"javascript"));
             headBuilder.append(ReadlibAndWrite.writeSrc(StringCoverter.addFunctionString(new SingleClassLinechartFunctionstring("container2").getOutstr()),"javascript"));
             
+            //sidebar
+            headBuilder.append(ReadlibAndWrite.WriteCSS("src/resources/css/sidebar/jquery.sidr.light.min.css"));
+            headBuilder.append(ReadlibAndWrite.WriteCSS("src/resources/css/sefdefine.css"));
+            headBuilder.append(ReadlibAndWrite.WriteJS("src/resources/js/sidebar/jquery.sidr.min.js"));
+            headBuilder.append(ReadlibAndWrite.writeSrc(this.sidebarJS(), "javascript"));
+            
             builder.append(new HeaderString(headBuilder).getBuilder()).append("\n");
 
         } catch (IOException ex) {
@@ -68,8 +77,24 @@ public class WriteHtml {
         }
         //body html
         StringBuilder bodyBuilder = new StringBuilder();
-        bodyBuilder.append("<div id=\"container1\" style=\"min-width:400px;height:400px;\"></div>\n");
-        bodyBuilder.append("<div id=\"container2\" style=\"min-width:400px;height:400px;\"></div>\n");
+        bodyBuilder.append(
+                StringCoverter.tags_id("div", "mobile-header",
+                        StringCoverter.tags_id_href("a", "responsive-menu-button", "#sidr-main", "Menu") 
+                ) + "\n"
+                + StringCoverter.tags("div",
+                        StringCoverter.tags_id_style("div", "container1", "min-width:400px;height:400px;", "")
+                        + StringCoverter.tags_id_style("div", "container2", "min-width:400px;height:400px;", "")
+                ) + "\n"
+                +StringCoverter.tags_id("div", "navigation",
+                        StringCoverter.tags_class("nav", "nav",
+                                StringCoverter.tags("ul",
+                                        StringCoverter.tags("li", StringCoverter.tags_href("a", "#container1", "test")) + "\n"
+                                        + StringCoverter.tags("li", StringCoverter.tags_href("a", "#container2", "test2"))
+                                )
+                        )
+                )
+        );
+
         builder.append(new BodyString(bodyBuilder).getBuilder() + "\n");
         builder.append("</html>\n");
     }
@@ -115,6 +140,14 @@ public class WriteHtml {
         return str;
     }
 
+    public String sidebarJS() {
+        String str = " $('#responsive-menu-button').sidr({\n"
+                + "      name: 'sidr-main',\n"
+                + "      source: '#navigation'\n"
+                + "    });";
+        return str;
+    }
+
     public static void openExplorer(String url){
             if(java.awt.Desktop.isDesktopSupported()){
             try{
@@ -154,7 +187,8 @@ public class WriteHtml {
         }
     }
     public static void main(String[] args) {
+//        System.out.println(StringCoverter.tags_id_style("div","container1", "min-width:400px;height:400px;", ""));
         new WriteHtml("test.html");
-        WriteHtml.openExplorer("file://"+new File("test.html").getAbsolutePath());
+        WriteHtml.openExplorer("file:///"+new File("test.html").getAbsolutePath().replace("\\", "/"));
     }
 }
