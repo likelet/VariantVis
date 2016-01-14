@@ -15,20 +15,21 @@ import java.util.LinkedHashMap;
  * @author ZHAO Qi
  * @date 2016-1-7 11:01:34
  * @version java 1.6.0
- * @version 
+ * @version
  */
-public class SingleClassLinechartFunctionstring extends FigureClass{
-       private String classid;
+public class SingleClassLinechartFunctionstring extends FigureClass {
+
+    private String classid;
     private LinkedHashMap<String, String> dataset;
     private String outstr;
 
-    public SingleClassLinechartFunctionstring(String classid){
-        LinkedHashMap<String, String> dataset=new LinkedHashMap<String, String> ();
+    public SingleClassLinechartFunctionstring(String classid) {
+        LinkedHashMap<String, String> dataset = new LinkedHashMap<String, String>();
         dataset.put("test1", "50");
         dataset.put("test2", "30");
         dataset.put("test3", "20");
-        this.dataset=dataset;
-        this.classid=classid;
+        this.dataset = dataset;
+        this.classid = classid;
         this.getSingleClassLinechartFunctionstring();
         
     }
