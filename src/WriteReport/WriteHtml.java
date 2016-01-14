@@ -9,6 +9,7 @@ import Tools.PiechartFunctionstring;
 import Tools.ReadlibAndWrite;
 import Tools.SingleClassLinechartFunctionstring;
 import Tools.StringCoverter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -114,7 +115,46 @@ public class WriteHtml {
         return str;
     }
 
+    public static void openExplorer(String url){
+            if(java.awt.Desktop.isDesktopSupported()){
+            try{
+                //创建一个URI实例,注意不是URL
+                java.net.URI uri=java.net.URI.create(url);
+                //获取当前系统桌面扩展
+                java.awt.Desktop dp=java.awt.Desktop.getDesktop();
+                //判断系统桌面是否支持要执行的功能
+                if(dp.isSupported(java.awt.Desktop.Action.BROWSE)){
+                    //获取系统默认浏览器打开链接
+                    dp.browse(uri);
+                }
+            }catch(java.lang.NullPointerException e){
+                //此为uri为空时抛出异常
+            }catch(java.io.IOException e){
+                //此为无法获取系统默认浏览器
+            }
+        }
+    }
+     public static void openExplorerLocalFile(String filename){
+            if(java.awt.Desktop.isDesktopSupported()){
+            try{
+                //创建一个URI实例,注意不是URL
+                java.net.URI uri=java.net.URI.create("file://"+new File(filename).getAbsolutePath());
+                //获取当前系统桌面扩展
+                java.awt.Desktop dp=java.awt.Desktop.getDesktop();
+                //判断系统桌面是否支持要执行的功能
+                if(dp.isSupported(java.awt.Desktop.Action.BROWSE)){
+                    //获取系统默认浏览器打开链接
+                    dp.browse(uri);
+                }
+            }catch(java.lang.NullPointerException e){
+                //此为uri为空时抛出异常
+            }catch(java.io.IOException e){
+                //此为无法获取系统默认浏览器
+            }
+        }
+    }
     public static void main(String[] args) {
         new WriteHtml("test.html");
+        WriteHtml.openExplorer("file://"+new File("test.html").getAbsolutePath());
     }
 }
