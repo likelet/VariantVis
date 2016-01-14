@@ -41,20 +41,20 @@ public class ReadlibAndWrite {
     //write external css
     public static String WriteCSS(String cssfile) throws IOException {
         StringBuilder builder = new StringBuilder();
-        builder.append("<script type=\"text/css\">\n");
+        builder.append("<style type=\"text/css\">\n");
         try {
             BufferedReader br = new BufferedReader(new FileReader(new File(cssfile)));
             //FileWriter fw = new FileWriter(outputFile);
 
             while (br.ready()) {
-                builder.append(br.readLine().trim());
+                builder.append(br.readLine().trim()+"\n");
             }
             //fw.flush();
             br.close();
         } catch (FileNotFoundException ex) {
 
         }
-        builder.append("\n</script>\n");
+        builder.append("\n</style>\n");
         return builder.toString();
     }
     

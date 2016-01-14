@@ -74,4 +74,38 @@ public class StringCoverter {
     public static void main(String[] args) {
         System.out.println(StringCoverter.getContainSeriesElement("test","1"));
     }
+    
+    
+    //html tags
+    public static String tags(String typestr,String textstr){
+        return new StringBuilder("<"+typestr+">"+textstr+"</"+typestr+">\n").toString();
+    }
+     public static String tags_id(String typestr, String idstr, String textstr) {
+        return new StringBuilder("<" + typestr + " id=\"" + idstr + "\">" + textstr + "</" + typestr + ">\n").toString();
+    }
+     public static String tags_href(String typestr, String hrefstr, String textstr) {
+        return new StringBuilder("<" + typestr + " href=\"" + hrefstr + "\">" + textstr + "</" + typestr + ">\n").toString();
+    }
+    
+    public static String tags_class(String typestr, String classstr, String textstr) {
+        return new StringBuilder("<" + typestr + " class=\"" + classstr + "\">" + textstr + "</" + typestr + ">\n").toString();
+    }
+
+    public static String tags_style(String typestr, String stylestr, String textstr) {
+        return new StringBuilder("<" + typestr + " style=\"" + stylestr + "\">" + textstr + "</" + typestr + ">\n").toString();
+    }
+
+    public static String tags_class_href(String typestr, String classstr, String hrefstr, String textstr) {
+        return new StringBuilder("<" + typestr + " class=\"" + classstr + "\" href=\"" + hrefstr + "\">" + textstr + "</" + typestr + ">\n").toString();
+    }
+
+    public static String tags_id_style(String typestr, String idstr, String stylestr, String textstr) {
+        return new StringBuilder("<" + typestr + " id=\"" + idstr + "\" style=\"" + stylestr + "\">" + textstr + "</" + typestr + ">\n").toString();
+    }
+     public static String tags_id_class(String typestr, String idstr, String classstr, String textstr) {
+        return new StringBuilder("<" + typestr + " id=\"" + idstr + "\" class=\"" + classstr + "\">" + textstr + "</" + typestr + ">\n").toString();
+    }
+      public static String tags_id_href(String typestr, String idstr, String hrefstr, String textstr) {
+        return new StringBuilder("<" + typestr + " id=\"" + idstr + "\" href=\"" + hrefstr + "\">" + textstr + "</" + typestr + ">\n").toString();
+    }
 }
